@@ -12,6 +12,8 @@ router.register(r'formats', api_views.FormatViewSet)
 router.register(r'filterfields', api_views.FilterFieldViewSet)
 router.register(r'contenttypes', api_views.ContentTypeViewSet)
 
+app_name = 'report_builder'
+
 urlpatterns = [
     url(r'^report/(?P<pk>\d+)/download_file/$', views.DownloadFileView.as_view(), name="report_download_file"),
     url(r'^report/(?P<pk>\d+)/download_file/(?P<filetype>.+)/$', views.DownloadFileView.as_view(), name="report_download_file"),
