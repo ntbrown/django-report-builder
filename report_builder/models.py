@@ -386,7 +386,7 @@ class Report(models.Model):
         return objects
 
     def get_absolute_url(self):
-        return reverse("report_update_view", args=(self.id,))
+        return reverse("report_builder:report_update_view", args=(self.id,))
 
     def edit(self):
         return mark_safe(
@@ -408,7 +408,7 @@ class Report(models.Model):
         else:
             return mark_safe(
                 '<a href="{0}"><img style="width: 26px; margin: -6px" src="{1}report_builder/img/download.svg"/></a>'.format(
-                    reverse('report_download_file', args=[self.id]),
+                    reverse('report_builder:report_download_file', args=[self.id]),
                     getattr(settings, 'STATIC_URL', '/static/'),
                 )
             )
@@ -417,7 +417,7 @@ class Report(models.Model):
 
     def copy_report(self):
         return mark_safe('<a href="{0}"><img style="width: 26px; margin: -6px" src="{1}report_builder/img/copy.svg"/></a>'.format(
-            reverse('report_builder_create_copy', args=[self.id]),
+            reverse('report_builder:report_builder_create_copy', args=[self.id]),
             getattr(settings, 'STATIC_URL', '/static/'),
         ))
     copy_report.short_description = "Copy"
